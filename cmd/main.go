@@ -1,11 +1,11 @@
 package main
 
 import (
-    "os"
+    // "os"
 	"fmt"
     "flag"
 
-	"github.com/duclos-cavalcanti/go-project-template/cmd/file"
+	"github.com/duclos-cavalcanti/go-org/cmd/file"
 )
 
 func main() {
@@ -14,4 +14,5 @@ func main() {
     flag.Parse()
 
     file.HelloWorld()
+    fmt.Println(*modeFlag)
 }
