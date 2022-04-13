@@ -1,8 +1,14 @@
 package file
 
-import "fmt"
+import (
+    "fmt"
+)
 
-func HelloWorld() {
-	// Return a greeting that embeds the name in a message.
-	fmt.Println("Hello, World!")
+type File struct {
+    Key int
+    Name, FileName, PrevFileName string
+}
+
+func (f File) Print() {
+    fmt.Printf("%+v", f)
 }

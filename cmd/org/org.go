@@ -1,18 +1,27 @@
 package org
 
 import(
+    // "os"
     "fmt"
 
-	// "github.com/duclos-cavalcanti/go-org/cmd/file"
+	"github.com/duclos-cavalcanti/go-org/cmd/file"
 )
 
-func numerical() {
-    println("numerical")
+func numerical(dir string) {
+    fmt.Println("numerical")
+    var f = file.File {
+        Key: 1,
+        Name: "foo",
+        FileName: "bar",
+        PrevFileName: "baz",
+    }
+
+    f.Print()
 }
 
-func Start(mode String) {
+func Start(mode string, dir string) {
     if mode == "numerical" {
-        numerical()
+        numerical(dir)
     } else {
         return
     }

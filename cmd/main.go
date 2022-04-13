@@ -1,18 +1,16 @@
 package main
 
 import (
-    // "os"
-	"fmt"
     "flag"
 
-	"github.com/duclos-cavalcanti/go-org/cmd/file"
+	"github.com/duclos-cavalcanti/go-org/cmd/org"
 )
 
 func main() {
-    var modeFlag = flag.String("mode", "numerical", "organization mode")
+    var modeFlag = flag.String("mode", "numerical", "mode to perform")
+    var dirFlag = flag.String("dir", ".", "target directory")
 
     flag.Parse()
 
-    file.HelloWorld()
-    fmt.Println(*modeFlag)
+    org.Start(*modeFlag, *dirFlag)
 }
