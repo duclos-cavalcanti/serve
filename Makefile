@@ -21,7 +21,7 @@ init:
 
 .PHONY: build
 build:
-	$(GO) build -v -o $(PROJECT) $(FLAGS) cmd/*.go
+	@$(GO) build -v -o $(PROJECT) $(FLAGS) cmd/*.go
 
 .PHONY: fmt
 fmt:
