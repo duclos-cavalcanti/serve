@@ -19,8 +19,8 @@ sudo apt install go
 2. `make install`
 
 ### ToDo's
-- [] implement more modes
-- [] implement `install` target
+- [ ] implement more modes
+- [ ] implement `install` target
 
 ## Thanks
 
