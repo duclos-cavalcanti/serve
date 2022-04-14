@@ -1,7 +1,7 @@
 # Go-Org
 
-| :exclamation: WIP |
-|-------------------|
+| :exclamation: Work in Progress |
+|--------------------------------|
 
 ## Introduction
 Little tool written to organize directories in some cool ways. Mostly a means to a very specific end of mine and also an opportunity to learn `Golang`.
