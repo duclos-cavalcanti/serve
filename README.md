@@ -19,7 +19,7 @@ sudo apt install go
 2. `make install`
 
 ### ToDo's
-[] implement more modes
+[ ] implement more modes
 
 ## Thanks
 
