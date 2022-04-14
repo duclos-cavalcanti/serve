@@ -1,22 +1,19 @@
 package org
 
 import(
-    // "os"
     "fmt"
 
 	"github.com/duclos-cavalcanti/go-org/cmd/file"
 )
 
 func numerical(dir string) {
-    fmt.Println("numerical")
-    var f = file.File {
-        Key: 1,
-        Name: "foo",
-        FileName: "bar",
-        PrevFileName: "baz",
-    }
+    files, err := file.ReadFiles(dir)
+    fmt.Println(files)
+    if err != nil {
+        fmt.Println("Error=: ", err)
+    } else {
 
-    f.Print()
+    }
 }
 
 func Start(mode string, dir string) {
