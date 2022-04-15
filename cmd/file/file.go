@@ -4,47 +4,51 @@ import (
     "os"
     "io/ioutil"
     "fmt"
+    "strings"
     // "errors"
 )
 
 type File struct {
     Key int
-    Name, FileName, PrevFileName string
+    Name, FileType string
 }
 
 func (f File) Print() {
-    fmt.Printf("%+v", f)
+    fmt.Println("Name: ", f.Name)
+    fmt.Println("Type: ", f.FileType)
+    fmt.Println("Key: ", f.Key)
+    fmt.Printf("\n")
 }
 
 func ReadFiles(dir string) ([]File, error) {
     var files []File
     var err error
 
-    // change directory if needed
-    if dir != "." {
-        err := os.Chdir(dir)
-        if err != nil {
-            return files, err
-        }
+    // change directory
+    err = os.Chdir(dir)
+    if err != nil {
+        return files, err
     }
 
-    // read current directory value
+    // read current directory
     cwd, err := os.Getwd()
     if err != nil {
         return files, err
     }
 
-    // obtain listed files
+    // read files
     fs, err := ioutil.ReadDir(cwd)
-    for i, f := range fs {
-        var f_ = File {
-            Key: i,
-            Name: "",
-            FileName: f.Name(),
-            PrevFileName: f.Name(),
+    for _, f := range fs {
+        var info, err = os.Stat(f.Name())
+        if ! os.IsNotExist(err) && !info.IsDir() {
+            var name, end, _ = strings.Cut(f.Name(), ".")
+            var f_ = File {
+                Key: -1,
+                Name: name,
+                FileType: end,
+            }
+            files = append(files, f_)
         }
-
-        files = append(files, f_)
     }
 
     return files, nil

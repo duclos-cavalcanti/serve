@@ -2,24 +2,19 @@ package org
 
 import(
     "fmt"
-
-	"github.com/duclos-cavalcanti/go-org/cmd/file"
+    "log"
+    "errors"
 )
 
-func numerical(dir string) {
-    files, err := file.ReadFiles(dir)
-    fmt.Println(files)
-    if err != nil {
-        fmt.Println("Error=: ", err)
-    } else {
-
-    }
-}
-
 func Start(mode string, dir string) {
+    var err error
     if mode == "numerical" {
-        numerical(dir)
+        err = numerical(dir)
+        if err != nil {
+            log.Fatal(err)
+        }
     } else {
-        return
+        err = errors.New(fmt.Sprintf("Mode: %s is Not defined", mode))
+        log.Fatal(err)
     }
 }
