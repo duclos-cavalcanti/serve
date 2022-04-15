@@ -9,8 +9,9 @@ Little tool written to organize directories in some cool ways. Mostly a means to
 ## Dependencies
 It simply uses Go's built in libraries. So to be able to compile the project, it is only needed to have `Go` installed on your system
 ### Arch
-```
+```sh
 sudo pacman -S go
+sudo pacman -S delve # for debugging if needed
 ```
 
 ### Debian-based
