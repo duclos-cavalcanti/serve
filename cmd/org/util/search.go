@@ -1,4 +1,4 @@
-package org
+package util
 
 import(
     "math/rand"
@@ -30,7 +30,7 @@ func quicksort(a []int) []int {
     return a
 }
 
-func search(dir string) error {
+func Search(dir string) error {
 
     return nil
 }

@@ -5,13 +5,13 @@ import(
     "log"
     "errors"
 
-    "github.com/duclos-cavalcanti/cmd/org/config"
+    "github.com/duclos-cavalcanti/go-org/cmd/org/config"
 )
 
-func Start(mode string, config string) {
+func Start(mode string, conf string) {
     var err error
     if mode == "default" {
-        err = config.Setup(config)
+        err = config.Setup(conf)
         if err != nil {
             log.Fatal(err)
         }

@@ -7,11 +7,13 @@ import(
     "os"
 
     "gopkg.in/yaml.v2"
+
+    "github.com/duclos-cavalcanti/go-org/cmd/org/util"
 )
 
 func readConfig() {
     config_path := "config.yml"
-    if existsFile(config_path) {
+    if util.ExistsFile(config_path) {
         fmt.Println("Config exists...")
         // do things
     } else {
@@ -28,7 +30,7 @@ func readConfig() {
             log.Fatalf("error: %v", err)
         }
 
-        err = writeFile(config_path, data)
+        err = util.WriteFile(config_path, data)
         if err != nil {
             log.Fatalf("error: %v", err)
         }
@@ -37,7 +39,7 @@ func readConfig() {
 }
 
 func Setup(config string) error {
-    is_dir, err := isDirectory(config)
+    is_dir, err := util.IsDirectory(config)
     if err != nil {
         return err
     } else {

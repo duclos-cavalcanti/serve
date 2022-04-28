@@ -1,26 +1,13 @@
-package org
+package util
 
 import(
     "fmt"
     "os"
     "io/ioutil"
-    "regexp"
-    "strings"
     "errors"
 )
 
-const NUMBERS = "0123456789"
-
-func stripNumber(str string) string {
-    re := regexp.MustCompile("[0-9]+")
-    return re.FindString(str)
-}
-
-func containsNumber(str string) bool {
-    return strings.ContainsAny(str, NUMBERS)
-}
-
-func writeFile(name string, in []byte) error {
+func WriteFile(name string, in []byte) error {
     err := ioutil.WriteFile(name, in, 0644)
     if err != nil {
         return err
@@ -29,7 +16,7 @@ func writeFile(name string, in []byte) error {
     }
 }
 
-func existsFile(file string) bool {
+func ExistsFile(file string) bool {
     _, err := os.Open(file)
     if err != nil {
         return false
@@ -38,7 +25,7 @@ func existsFile(file string) bool {
     }
 }
 
-func isDirectory(dir string) (bool, error) {
+func IsDirectory(dir string) (bool, error) {
     file_info, err := os.Stat(dir)
     if err != nil {
         return false, err
