@@ -43,7 +43,7 @@ tidy:
 
 .PHONY: run
 run: build
-	@./$(PROJECT) --dir test/numerical
+	@./$(PROJECT) --config test
 
 .PHONY: clean
 clean:
