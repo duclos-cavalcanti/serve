@@ -7,10 +7,9 @@ import (
 )
 
 func main() {
-    var modeFlag = flag.String("mode", "numerical", "mode to perform")
-    var dirFlag = flag.String("dir", ".", "target directory")
-    // var actionFlag = flag.String("action", "default", "action to perform within the given mode")
+    var modeFlag = flag.String("mode", "default", "mode to perform")
+    var configFlag = flag.String("config", "~/.config/go-org", "config directory")
 
     flag.Parse()
-    org.Start(*modeFlag, *dirFlag)
+    org.Start(*modeFlag, *configFlag)
 }

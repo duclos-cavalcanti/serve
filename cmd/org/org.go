@@ -6,10 +6,10 @@ import(
     "errors"
 )
 
-func Start(mode string, dir string) {
+func Start(mode string, config string) {
     var err error
-    if mode == "numerical" {
-        err = numerical(dir)
+    if mode == "default" {
+        err = setup(config)
         if err != nil {
             log.Fatal(err)
         }
