@@ -4,12 +4,14 @@ import(
     "fmt"
     "log"
     "errors"
+
+    "github.com/duclos-cavalcanti/cmd/org/config"
 )
 
 func Start(mode string, config string) {
     var err error
     if mode == "default" {
-        err = setup(config)
+        err = config.Setup(config)
         if err != nil {
             log.Fatal(err)
         }

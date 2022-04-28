@@ -1,4 +1,4 @@
-package org
+package config
 
 import(
     "fmt"
@@ -36,7 +36,7 @@ func readConfig() {
 
 }
 
-func setup(config string) error {
+func Setup(config string) error {
     is_dir, err := isDirectory(config)
     if err != nil {
         return err
