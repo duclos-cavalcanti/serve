@@ -1,10 +1,11 @@
 # Go-Org
+A CLI to-do tool :)
 
 | :exclamation: Work in Progress |
 |--------------------------------|
 
 ## Introduction
-Little tool written to organize directories in some cool ways. Mostly a means to a very specific end of mine and also an opportunity to learn `Golang`.
+Mostly a means to a very specific end of mine and also an opportunity to learn `Golang`.
 
 ## Dependencies
 It simply uses Go's built in libraries. So to be able to compile the project, it is only needed to have `Go` installed on your system
