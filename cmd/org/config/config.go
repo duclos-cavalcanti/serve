@@ -11,31 +11,21 @@ import(
     "github.com/duclos-cavalcanti/go-org/cmd/org/util"
 )
 
-func readConfig() {
-    config_path := "config.yml"
-    if util.ExistsFile(config_path) {
-        fmt.Println("Config exists...")
-        // do things
-    } else {
-        fmt.Println("Creating config...")
-        info := struct {
-            User string
-            Stacks string
-        } {
-            User: "foo",
-            Stacks: "bar",
-        }
-        data, err := yaml.Marshal(&info)
-        if err != nil {
-            log.Fatalf("error: %v", err)
-        }
+func readConfig(config_path string) {
 
-        err = util.WriteFile(config_path, data)
-        if err != nil {
-            log.Fatalf("error: %v", err)
-        }
+}
+
+func writeConfig(config_path string) {
+    conf := default_config()
+    data, err := yaml.Marshal(&conf)
+    if err != nil {
+        log.Fatalf("error: %v", err)
     }
 
+    err = util.WriteFile(config_path, data)
+    if err != nil {
+        log.Fatalf("error: %v", err)
+    }
 }
 
 func Setup(config string) error {
@@ -48,7 +38,14 @@ func Setup(config string) error {
             if err != nil {
                 return err
             } else {
-                readConfig()
+                config_path := "config.yml"
+                if util.ExistsFile(config_path) {
+                    fmt.Println("Config exists...")
+                    readConfig(config_path)
+                } else {
+                    fmt.Println("Creating config...")
+                    writeConfig(config_path)
+                }
                 return nil
             }
         } else {
