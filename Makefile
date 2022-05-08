@@ -47,5 +47,4 @@ run: build
 
 .PHONY: clean
 clean:
-	@echo "## Cleaning Project ##"
 	$(GO) clean -modcache
