@@ -2,21 +2,35 @@ package org
 
 import(
     "fmt"
+    "os"
     "log"
-    "errors"
 
+	"github.com/gdamore/tcell"
     "github.com/duclos-cavalcanti/go-org/cmd/org/config"
 )
 
-func Start(mode string, conf string) {
-    var err error
+func display(conf config.Config) {
+    s, err := tcell.NewScreen()
+    if err != nil {
+        log.Fatalf("%+v", err)
+    }
+    // Set default text style
+    defStyle := tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorWhite)
+    s.SetStyle(defStyle)
+
+    // Clear screen
+    s.Clear()
+}
+
+func Start(mode string, config_dir string) {
     if mode == "default" {
-        err = config.Setup(conf)
+        conf, err := config.Setup(config_dir)
         if err != nil {
             log.Fatal(err)
         }
+        conf.Print()
     } else {
-        err = errors.New(fmt.Sprintf("Mode: %s is Not defined", mode))
-        log.Fatal(err)
+        log.Fatal(fmt.Errorf("Mode: %s is Not defined", mode))
     }
+    os.Exit(0)
 }
