@@ -10,16 +10,42 @@ import(
 )
 
 func display(conf config.Config) {
+    defStyle := tcell.StyleDefault.Background(tcell.ColorDefault).Foreground(tcell.ColorWhite)
     s, err := tcell.NewScreen()
     if err != nil {
         log.Fatalf("%+v", err)
     }
-    // Set default text style
-    defStyle := tcell.StyleDefault.Background(tcell.ColorBlack).Foreground(tcell.ColorWhite)
-    s.SetStyle(defStyle)
 
-    // Clear screen
+    if err := s.Init(); err != nil {
+    		log.Fatalf("%+v", err)
+    	}
+
+    s.SetStyle(defStyle)
     s.Clear()
+
+    s.SetContent(0, 0, 'H', nil, defStyle)
+    s.SetContent(1, 0, 'i', nil, defStyle)
+    s.SetContent(2, 0, '!', nil, defStyle)
+
+    for {
+        // Update Screen
+        s.Show()
+
+        // Poll Event
+        ev := s.PollEvent()
+
+        // Process event
+        switch ev := ev.(type) {
+            case *tcell.EventResize:
+                s.Sync()
+
+            case *tcell.EventKey:
+                if ev.Key() == tcell.KeyEscape || ev.Key() == tcell.KeyCtrlC {
+                s.Fini()
+                os.Exit(0)
+            }
+        }
+    }
 }
 
 func Start(mode string, config_dir string) {
@@ -28,7 +54,7 @@ func Start(mode string, config_dir string) {
         if err != nil {
             log.Fatal(err)
         }
-        conf.Print()
+        display(conf)
     } else {
         log.Fatal(fmt.Errorf("Mode: %s is Not defined", mode))
     }
