@@ -6,6 +6,7 @@ import(
     "log"
 
 	"github.com/gdamore/tcell"
+    "github.com/duclos-cavalcanti/go-org/cmd/org/term"
     "github.com/duclos-cavalcanti/go-org/cmd/org/config"
 )
 
@@ -26,6 +27,8 @@ func display(conf config.Config) {
     s.SetContent(0, 0, 'H', nil, defStyle)
     s.SetContent(1, 0, 'i', nil, defStyle)
     s.SetContent(2, 0, '!', nil, defStyle)
+
+    term.DrawText(s, 0, 0, 2, 0, defStyle, "Hi!")
 
     for {
         // Update Screen
