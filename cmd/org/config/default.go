@@ -1,14 +1,26 @@
 package config
 
-import()
+import(
+    "fmt"
+)
 
-type config struct {
+type Config struct {
     User string
     Stacks string
 }
 
-func default_config() config {
-    return config {
+
+func (c Config) Print() {
+    fmt.Println("--------------")
+    fmt.Println("Config")
+    fmt.Println("User: ", c.User)
+    fmt.Println("Stacks: ", c.Stacks)
+    fmt.Println("--------------")
+    fmt.Printf("\n")
+}
+
+func default_config() Config {
+    return Config {
         User : "foo",
         Stacks : "bar",
     }
