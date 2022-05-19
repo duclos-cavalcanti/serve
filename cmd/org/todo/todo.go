@@ -1,27 +1,26 @@
-package file
+package todo
 
 import (
     "os"
     "io/ioutil"
     "fmt"
     "strings"
-    // "errors"
 )
 
-type File struct {
+type notebook struct {
     Key int
     Name, FileType string
 }
 
-func (f File) Print() {
+func (f notebook) Print() {
     fmt.Println("Name: ", f.Name)
     fmt.Println("Type: ", f.FileType)
     fmt.Println("Key: ", f.Key)
     fmt.Printf("\n")
 }
 
-func ReadFiles(dir string) ([]File, error) {
-    var files []File
+func ReadFiles(dir string) ([]notebook, error) {
+    var files []notebook
     var err error
 
     // change directory
@@ -42,7 +41,7 @@ func ReadFiles(dir string) ([]File, error) {
         var info, err = os.Stat(f.Name())
         if ! os.IsNotExist(err) && !info.IsDir() {
             var name, end, _ = strings.Cut(f.Name(), ".")
-            var f_ = File {
+            var f_ = notebook {
                 Key: -1,
                 Name: name,
                 FileType: end,
