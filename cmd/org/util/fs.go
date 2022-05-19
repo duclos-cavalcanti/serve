@@ -1,11 +1,14 @@
 package util
 
 import(
-    "fmt"
     "os"
     "io/ioutil"
-    "errors"
 )
+
+func ReadFile(file string) ([]byte, error) {
+    out,err := ioutil.ReadFile(file)
+    return out,err
+}
 
 func WriteFile(name string, in []byte) error {
     err := ioutil.WriteFile(name, in, 0644)
@@ -25,15 +28,15 @@ func ExistsFile(file string) bool {
     }
 }
 
-func IsDirectory(dir string) (bool, error) {
+func IsDirectory(dir string) bool {
     file_info, err := os.Stat(dir)
     if err != nil {
-        return false, err
+        return false
     } else {
         if file_info.IsDir() {
-            return true, nil
+            return true
         } else {
-            return false, errors.New(fmt.Sprintf("%s is not a valid directory", dir))
+            return false
         }
     }
 }
