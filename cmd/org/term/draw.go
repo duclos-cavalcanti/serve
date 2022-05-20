@@ -1,21 +1,24 @@
 package term
 
 import (
+    "errors"
+
 	"github.com/gdamore/tcell"
+    "github.com/duclos-cavalcanti/go-org/cmd/org/util"
 )
 
-func DrawText(s tcell.Screen, x1, y1, x2, y2 int, style tcell.Style, text string) {
-	row := y1
-	col := x1
-	for _, r := range []rune(text) {
-		s.SetContent(col, row, r, nil, style)
-		col++
-		if col >= x2 {
-			row++
-			col = x1
-		}
-		if row > y2 {
-			break
-		}
-	}
+func DrawText(s tcell.Screen, sc ScreenContext, style tcell.Style, text string) error {
+	row := sc.Row()
+    w, _ := s.Size()
+    length := util.LengthString(text)
+
+    if length + row > w {
+        return errors.New("Unable to draw to screen, text length would exceed width.")
+    } else {
+	    for _, c := range []rune(text) {
+	    	s.SetContent(sc.row, sc.col, c, nil, style)
+            sc.row++
+	    }
+        return nil
+    }
 }
