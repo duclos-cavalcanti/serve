@@ -12,6 +12,7 @@ SRC ?= $(shell find $(DIR) -name "*.go" -type f)
 FLAGS ?=
 LDFLAGS ?=
 
+PWD ?= $(shell pwd)
 
 all:
 
@@ -21,29 +22,36 @@ init:
 
 .PHONY: build
 build:
-	@$(GO) build -v -o $(PROJECT) $(FLAGS) cmd/*.go
+	$(GO) build -v -o $(PROJECT) $(FLAGS) cmd/*.go
 
-.PHONY: fmt
-fmt:
-	$(FMT) -w $(SRC)
+.PHONY: run
+run: build
+	@./$(PROJECT)
 
 .PHONY: debug
 debug:
 	$(DEBUG) ${DIR}/main.go
 
-# UNTESTED!
+.PHONY: fmt
+fmt:
+	$(FMT) -w $(SRC)
+
 .PHONY: test
 test:
-	@go generate -v ./...
-	@go test -race -v ./...
+	@go test -v ./...
+
+.PHONY: cover
+cover:
+	@go test ./... -cover
+
+.PHONY: docs
+docs:
+	@godoc -http=:6060
+	@ # godoc -url http://localhost:6060/pkg/github.com/duclos-cavalcanti/go-project-template > docs/index.html
 
 .PHONY: tidy
 tidy:
 	$(GO) mod tidy
-
-.PHONY: run
-run: build
-	@./$(PROJECT) --config test
 
 .PHONY: clean
 clean:
