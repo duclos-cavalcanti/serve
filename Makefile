@@ -26,7 +26,7 @@ build:
 
 .PHONY: run
 run: build
-	@./$(PROJECT)
+	@./$(PROJECT) --config test
 
 .PHONY: debug
 debug:
