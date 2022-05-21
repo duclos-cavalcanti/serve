@@ -7,8 +7,8 @@ import (
     "github.com/duclos-cavalcanti/go-org/cmd/org/util"
 )
 
-func DrawText(s tcell.Screen, sc ScreenContext, style tcell.Style, text string) error {
-	row := sc.Row()
+func DrawText(s tcell.Screen, tc TerminalContext, style tcell.Style, text string) error {
+	row := tc.Row()
     w, _ := s.Size()
     length := util.LengthString(text)
 
@@ -16,8 +16,8 @@ func DrawText(s tcell.Screen, sc ScreenContext, style tcell.Style, text string) 
         return errors.New("Unable to draw to screen, text length would exceed width.")
     } else {
 	    for _, c := range []rune(text) {
-	    	s.SetContent(sc.row, sc.col, c, nil, style)
-            sc.row++
+	    	s.SetContent(tc.row, tc.col, c, nil, style)
+            tc.row++
 	    }
         return nil
     }
