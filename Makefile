@@ -26,7 +26,7 @@ build:
 
 .PHONY: run
 run: build
-	@./$(PROJECT) --config test
+	./$(PROJECT) --config test
 
 .PHONY: debug
 debug:
@@ -38,15 +38,15 @@ fmt:
 
 .PHONY: test
 test:
-	@go test -v ./...
+	go test -v ./...
 
 .PHONY: cover
 cover:
-	@go test ./... -cover
+	go test ./... -cover
 
 .PHONY: docs
 docs:
-	@godoc -http=:6060
+	godoc -http=:6060
 	@ # godoc -url http://localhost:6060/pkg/github.com/duclos-cavalcanti/go-project-template > docs/index.html
 
 .PHONY: tidy
