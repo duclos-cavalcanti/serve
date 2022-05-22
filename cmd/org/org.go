@@ -13,45 +13,43 @@ import(
 
 func defaultMode(fs Flags) {
     config_flag := fs.ConfigFlag
-    _, err := config.Setup(config_flag)
+    config, err := config.Setup(config_flag)
     if err != nil {
         log.Fatal(err)
     }
 
-    tc := term.NewTerminalContext()
-    s, err := tcell.NewScreen()
+    tc, err := term.NewTerminalContext()
     if err != nil {
         log.Fatalf("%+v", err)
     }
 
-    if err := s.Init(); err != nil {
+    if err := tc.Screen.Init(); err != nil {
     		log.Fatalf("%+v", err)
     }
 
-    defStyle := tcell.StyleDefault.Background(tcell.ColorDefault).Foreground(tcell.ColorWhite)
-    s.SetStyle(defStyle)
-    s.Clear() // clears screen
+    tc.Screen.SetStyle(tc.DefaultStyle)
+    tc.Screen.Clear() // clears screen
 
-    term.DrawText(s, tc, defStyle, "Hi!")
+    term.DrawTextNewLine(&tc, tc.DefaultStyle, fmt.Sprintf("User: %s", config.User))
+    term.DrawText(&tc, tc.DefaultStyle, fmt.Sprintf("Row %d and Col %d", tc.Row, tc.Col))
 
     for {
         // Update Screen
-        s.Show()
+        tc.Screen.Show()
 
         // Poll Event
-        ev := s.PollEvent()
+        ev := tc.Screen.PollEvent()
 
         // Process event
         switch ev := ev.(type) {
             case *tcell.EventResize:
                 w, h := ev.Size()
-                tc.SetWidth(w)
-                tc.SetHeight(h)
-                s.Sync()
+                tc.SetSize(w, h)
+                tc.Screen.Sync()
 
             case *tcell.EventKey:
                 if ev.Key() == tcell.KeyEscape || ev.Key() == tcell.KeyCtrlC {
-                s.Fini()
+                tc.Screen.Fini()
                 os.Exit(0)
             }
         }

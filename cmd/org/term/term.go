@@ -1,39 +1,53 @@
 package term
 
 import (
-	// "github.com/gdamore/tcell"
+	"github.com/gdamore/tcell"
 )
 
 type TerminalContext struct {
-    row, col, width, height int
+    Screen tcell.Screen
+    DefaultStyle tcell.Style
+    Row, Col int
+    width, height int
 }
 
-func NewTerminalContext() TerminalContext {
-    var s TerminalContext
-    s.row = 0
-    s.col = 0
-    s.width = 0
-    s.height = 0
+func NewTerminalContext() (TerminalContext, error) {
+    tc := TerminalContext {
+        Row: 0,
+        Col: 0,
+        width: 0,
+        height: 0,
+        DefaultStyle: tcell.StyleDefault.Background(tcell.ColorDefault).Foreground(tcell.ColorWhite),
+        Screen: nil,
+    }
 
-    return s
+    s, err := tcell.NewScreen()
+    w, h := s.Size()
+    tc.width = w
+    tc.height = h
+    tc.Screen = s
+
+    return tc, err
 }
 
-func (s TerminalContext) Row() int {
-    return s.row
+func (tc *TerminalContext) Size() (int, int) {
+    return tc.Screen.Size()
 }
 
-func (s TerminalContext) Col() int {
-    return s.col
+func (tc *TerminalContext) Width() int {
+    return tc.width
 }
 
-func (s TerminalContext) Size() (int, int) {
-    return s.width, s.height
+func (tc *TerminalContext) Height() int {
+    return tc.height
 }
 
-func (s TerminalContext) SetWidth(w int) {
-    s.width = w
+func (tc *TerminalContext) SetSize(w, h int) {
+    tc.width = w
+    tc.height = h
 }
 
-func (s TerminalContext) SetHeight(h int) {
-    s.height = h
+func (tc *TerminalContext) NewLine() {
+    tc.Row = 0
+    tc.Col++
 }
