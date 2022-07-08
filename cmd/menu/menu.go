@@ -6,7 +6,7 @@ import(
     "log"
 
 	"github.com/gdamore/tcell"
-    "github.com/duclos-cavalcanti/go-org/cmd/org/term"
+    "github.com/duclos-cavalcanti/go-org/cmd/menu/term"
 )
 
 func defaultMode(fs Flags) {

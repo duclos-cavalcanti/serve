@@ -26,7 +26,7 @@ build:
 
 .PHONY: run
 run: build
-	./$(PROJECT) --config test
+	./$(PROJECT) --options foo,bar
 
 .PHONY: debug
 debug:
