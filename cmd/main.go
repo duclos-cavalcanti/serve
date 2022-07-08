@@ -1,10 +1,10 @@
 package main
 
 import (
-	"github.com/duclos-cavalcanti/go-org/cmd/org"
+	"github.com/duclos-cavalcanti/go-org/cmd/menu"
 )
 
 func main() {
-    flags := org.ParseFlags()
-    org.Start(flags)
+    flags := menu.ParseFlags()
+    menu.Start(flags)
 }

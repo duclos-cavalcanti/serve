@@ -1,5 +1,5 @@
 # Go-Org
-A CLI to-do tool :)
+A CLI menu tool :)
 
 | :exclamation: Work in Progress |
 |--------------------------------|

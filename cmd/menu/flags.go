@@ -1,23 +1,23 @@
-package org
+package menu
 
 import (
     "flag"
 )
 
 type Flags struct {
-    ModeFlag, ConfigFlag string
+    ModeFlag, OptFlag string
 }
 
 
 func ParseFlags() Flags {
     var fs Flags
     var modeFlag = flag.String("mode", "default", "mode to perform")
-    var configFlag = flag.String("config", "~/.config/go-org", "config directory")
+    var optFlag = flag.String("options", "", "options to select from")
 
     flag.Parse()
 
     fs.ModeFlag = *modeFlag
-    fs.ConfigFlag = *configFlag
+    fs.OptFlag = *optFlag
 
     return fs
 }

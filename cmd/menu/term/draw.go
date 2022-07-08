@@ -4,7 +4,7 @@ import (
     "errors"
 
 	"github.com/gdamore/tcell"
-    "github.com/duclos-cavalcanti/go-org/cmd/org/util"
+    "github.com/duclos-cavalcanti/go-org/cmd/menu/util"
 )
 
 func DrawText(tc *TerminalContext, style tcell.Style, text string) error {

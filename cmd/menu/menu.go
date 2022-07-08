@@ -1,4 +1,4 @@
-package org
+package menu
 
 import(
     "fmt"
@@ -6,17 +6,11 @@ import(
     "log"
 
 	"github.com/gdamore/tcell"
-
     "github.com/duclos-cavalcanti/go-org/cmd/org/term"
-    "github.com/duclos-cavalcanti/go-org/cmd/org/config"
 )
 
 func defaultMode(fs Flags) {
-    config_flag := fs.ConfigFlag
-    config, err := config.Setup(config_flag)
-    if err != nil {
-        log.Fatal(err)
-    }
+    // opts_flag := fs.OptFlag
 
     tc, err := term.NewTerminalContext()
     if err != nil {
@@ -30,7 +24,7 @@ func defaultMode(fs Flags) {
     tc.Screen.SetStyle(tc.DefaultStyle)
     tc.Screen.Clear() // clears screen
 
-    term.DrawTextNewLine(&tc, tc.DefaultStyle, fmt.Sprintf("User: %s", config.User))
+    term.DrawTextNewLine(&tc, tc.DefaultStyle, fmt.Sprintf("User: %s", "Example"))
     term.DrawText(&tc, tc.DefaultStyle, fmt.Sprintf("Row %d and Col %d", tc.Row, tc.Col))
 
     for {
@@ -43,8 +37,7 @@ func defaultMode(fs Flags) {
         // Process event
         switch ev := ev.(type) {
             case *tcell.EventResize:
-                w, h := ev.Size()
-                tc.SetSize(w, h)
+                // w, h := ev.Size()
                 tc.Screen.Sync()
 
             case *tcell.EventKey:
