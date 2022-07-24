@@ -13,12 +13,12 @@ import (
 func defaultMode(fs Flags) {
     var wait_group sync.WaitGroup
 
-    initial_state := states.NewState(fs.OptFlag)
     state_channel := make(chan states.State)
     tc := term.NewTerminalContext()
 
-    application := CreateApp(&tc, &wait_group)
-    application.state = (*states.State)(&initial_state)
+    application := CreateApp(&tc,
+                             states.CreateState(fs.OptFlag),
+                             &wait_group)
 
     wait_group.Add(2)
     go parseEvents(&application, state_channel)
@@ -26,7 +26,13 @@ func defaultMode(fs Flags) {
     wait_group.Wait()
 
     tc.Screen.Fini()
-    os.Exit(0)
+    application.log.dump()
+
+    if (application.hasUserChosen()) {
+        os.Exit(0)
+    } else {
+        os.Exit(-1)
+    }
 }
 
 func Start(fs Flags) {

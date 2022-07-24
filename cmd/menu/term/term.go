@@ -13,6 +13,10 @@ type TerminalContext struct {
     Filled int
 }
 
+func NewStyle(bg, fg tcell.Color) (tcell.Style) {
+    return tcell.StyleDefault.Background(bg).Foreground(fg)
+}
+
 func NewTerminalContext() (TerminalContext) {
     tc := TerminalContext {
         Row: 0,
@@ -37,6 +41,9 @@ func NewTerminalContext() (TerminalContext) {
 }
 
 func (tc *TerminalContext) ClearScreen() {
+    tc.Row = 0
+    tc.Col = 0
+    tc.Filled = 0
     tc.Screen.Clear()
 }
 

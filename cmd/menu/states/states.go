@@ -7,12 +7,17 @@ import (
 type State struct {
     Options []string
     Selected int
+    Size int
+    Chosen bool
 }
 
-func NewState(opts string) State {
+func CreateState(opts string) State {
+    options := strings.SplitN(opts, " ", -1)
     s := State {
-        Options: strings.SplitN(opts, " ", -1),
+        Options: options,
+        Size: len(options),
         Selected: 0,
+        Chosen: false,
     }
 
     return s
