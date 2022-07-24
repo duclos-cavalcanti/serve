@@ -14,7 +14,7 @@ LDFLAGS ?=
 
 PWD ?= $(shell pwd)
 
-all:
+all: clean build
 
 .PHONY: init
 init:
@@ -25,8 +25,8 @@ build:
 	$(GO) build -v -o $(PROJECT) $(FLAGS) cmd/*.go
 
 .PHONY: run
-run: build
-	./$(PROJECT) --options foo,bar
+run:
+	./$(PROJECT) --options "foo bar baz"
 
 .PHONY: debug
 debug:
