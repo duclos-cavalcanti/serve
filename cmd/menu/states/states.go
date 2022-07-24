@@ -2,19 +2,17 @@ package states
 
 import (
     "strings"
-
-    "github.com/duclos-cavalcanti/go-menu/cmd/menu/term"
 )
 
 type State struct {
-    options []string
-    selected int
+    Options []string
+    Selected int
 }
 
 func NewState(opts string) State {
     s := State {
-        options: strings.SplitN(opts, " ", -1),
-        selected: 0,
+        Options: strings.SplitN(opts, " ", -1),
+        Selected: 0,
     }
 
     return s

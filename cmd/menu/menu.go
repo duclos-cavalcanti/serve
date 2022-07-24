@@ -1,52 +1,33 @@
 package menu
 
-import(
-    "fmt"
-    "os"
-    "log"
+import (
+	"fmt"
+	"log"
+	"os"
+	"sync"
 
-	"github.com/gdamore/tcell"
-    "github.com/duclos-cavalcanti/go-org/cmd/menu/term"
+	"github.com/duclos-cavalcanti/go-menu/cmd/menu/states"
+	"github.com/duclos-cavalcanti/go-menu/cmd/menu/term"
 )
 
 func defaultMode(fs Flags) {
-    // opts_flag := fs.OptFlag
+    var wait_group sync.WaitGroup
 
-    tc, err := term.NewTerminalContext()
-    if err != nil {
-        log.Fatalf("%+v", err)
-    }
+    initial_state := states.NewState(fs.OptFlag)
+    state_channel := make(chan states.State)
+    tc := term.NewTerminalContext()
 
-    if err := tc.Screen.Init(); err != nil {
-    		log.Fatalf("%+v", err)
-    }
+    application := CreateApp(&tc, &wait_group)
+    application.state = (*states.State)(&initial_state)
 
-    tc.Screen.SetStyle(tc.DefaultStyle)
-    tc.Screen.Clear() // clears screen
+    go parseEvents(&application, state_channel)
+    go displayApplication(&application, state_channel)
+    wait_group.Wait()
 
-    term.DrawTextNewLine(&tc, tc.DefaultStyle, fmt.Sprintf("User: %s", "Example"))
-    term.DrawText(&tc, tc.DefaultStyle, fmt.Sprintf("Row %d and Col %d", tc.Row, tc.Col))
+    fmt.Println("Here")
 
-    for {
-        // Update Screen
-        tc.Screen.Show()
-
-        // Poll Event
-        ev := tc.Screen.PollEvent()
-
-        // Process event
-        switch ev := ev.(type) {
-            case *tcell.EventResize:
-                // w, h := ev.Size()
-                tc.Screen.Sync()
-
-            case *tcell.EventKey:
-                if ev.Key() == tcell.KeyEscape || ev.Key() == tcell.KeyCtrlC {
-                tc.Screen.Fini()
-                os.Exit(0)
-            }
-        }
-    }
+    tc.Screen.Fini()
+    os.Exit(0)
 }
 
 func Start(fs Flags) {

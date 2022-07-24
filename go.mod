@@ -1,4 +1,4 @@
-module github.com/duclos-cavalcanti/go-org
+module github.com/duclos-cavalcanti/go-menu
 
 go 1.17
 

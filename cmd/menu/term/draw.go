@@ -4,7 +4,7 @@ import (
     "errors"
 
 	"github.com/gdamore/tcell"
-    "github.com/duclos-cavalcanti/go-org/cmd/menu/util"
+    "github.com/duclos-cavalcanti/go-menu/cmd/menu/util"
 )
 
 func DrawText(tc *TerminalContext, style tcell.Style, text string) error {
@@ -19,16 +19,22 @@ func DrawText(tc *TerminalContext, style tcell.Style, text string) error {
 	    	tc.Screen.SetContent(tc.Row, tc.Col, c, nil, style)
             tc.Row++
 	    }
+        tc.MarkRow()
         return nil
     }
 }
 
 func DrawTextNewLine(tc *TerminalContext, style tcell.Style, text string) error {
-    err := DrawText(tc, style, text)
-    if err != nil {
-        return err
+    _, h := tc.Size()
+    if tc.Col + 1 >= h {
+        return errors.New("NewLine would exceed available columns in terminal")
     } else {
-        tc.NewLine()
-        return nil
+        err := DrawText(tc, style, text)
+        if err != nil {
+            return err
+        } else {
+            tc.NewLine()
+            return nil
+        }
     }
 }

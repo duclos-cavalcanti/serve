@@ -1,7 +1,7 @@
 package main
 
 import (
-	"github.com/duclos-cavalcanti/go-org/cmd/menu"
+	"github.com/duclos-cavalcanti/go-menu/cmd/menu"
 )
 
 func main() {

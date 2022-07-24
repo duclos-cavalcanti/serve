@@ -1,9 +1,9 @@
 package menu
 
 import (
-    "fmt"
+    // "fmt"
+    // "os"
     "flag"
-    "os"
 )
 
 type Flags struct {
@@ -21,8 +21,5 @@ func ParseFlags() Flags {
     fs.ModeFlag = *modeFlag
     fs.OptFlag = *optFlag
 
-    fmt.Println("%s", *optFlag)
-
-    os.Exit(0)
     return fs
 }
