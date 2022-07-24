@@ -1,10 +1,10 @@
 package menu
 
 import (
-	"github.com/gdamore/tcell"
-
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/states"
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/term"
+
+	"github.com/gdamore/tcell"
 )
 
 func parseEvents(app *App, state_channel chan states.State) {
@@ -23,12 +23,11 @@ func parseEvents(app *App, state_channel chan states.State) {
             case *tcell.EventKey:
                 if ev.Key() == tcell.KeyEscape || ev.Key() == tcell.KeyCtrlC {
                     close(state_channel)
-                    break
+                    return
             }
         }
         state_channel <- *s
     }
-    return
 }
 
 func displayApplication(app *App, state_channel <-chan states.State) {

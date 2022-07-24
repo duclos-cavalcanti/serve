@@ -20,11 +20,10 @@ func defaultMode(fs Flags) {
     application := CreateApp(&tc, &wait_group)
     application.state = (*states.State)(&initial_state)
 
+    wait_group.Add(2)
     go parseEvents(&application, state_channel)
     go displayApplication(&application, state_channel)
     wait_group.Wait()
-
-    fmt.Println("Here")
 
     tc.Screen.Fini()
     os.Exit(0)
