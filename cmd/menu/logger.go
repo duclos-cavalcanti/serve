@@ -4,7 +4,6 @@ import (
     "os"
     exec "os/exec"
     "fmt"
-    "sync"
     "log"
 
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/util"
@@ -28,7 +27,7 @@ func createLogger() *log.Logger {
     return l
 }
 
-func logger(wait_group *sync.WaitGroup) {
+func logger() {
     defer wait_group.Done()
     l := createLogger()
 

@@ -4,6 +4,7 @@ import (
 	"log"
 	"os"
 	"sync"
+    "fmt"
 
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/states"
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/term"
@@ -12,12 +13,11 @@ import (
 var (
     debug_channel chan string
     state_channel chan states.State
+    wait_group sync.WaitGroup
 )
 
 
 func defaultMode(fs Flags) {
-    var wait_group sync.WaitGroup
-
     tc := term.NewTerminalContext()
 
     debug_channel = make(chan string)
@@ -28,15 +28,15 @@ func defaultMode(fs Flags) {
                              &wait_group)
 
     wait_group.Add(3)
-    go parseEvents(&application)
+    go parseApplicationEvents(&application)
     go displayApplication(&application)
-    go logger(application.wait_group)
+    go logger()
     wait_group.Wait()
 
     tc.Screen.Fini()
 
     if (application.hasUserChosen()) {
-        println(application.state.Options[application.state.Selected])
+        fmt.Println(application.state.Options[application.state.Selected])
         os.Exit(0)
     } else {
         os.Exit(-1)
