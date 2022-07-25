@@ -9,7 +9,7 @@ make decisions on said scripts more interactive. Also is a great opportunity to 
 |--------------------------------|
 
 ## Usage
-![Example](./.assets/example.gif)
+![Example](./.assets/example.mp4)
 
 ## Dependencies
 It simply uses Go's built in libraries. So to be able to compile the project, it is only needed to have `Go` installed on your system
