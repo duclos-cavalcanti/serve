@@ -34,12 +34,11 @@ func logger() {
     for {
         s, more := <- debug_channel
         if !more {
-            break
+            return
         }
 
         l.Println(s)
     }
-    return
 }
 
 func logEvent(msg string) {

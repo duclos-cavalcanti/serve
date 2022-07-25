@@ -9,8 +9,6 @@ import (
 type TerminalContext struct {
     Screen tcell.Screen
     DefaultStyle tcell.Style
-    Row, Col int
-    Filled int
 }
 
 func NewStyle(bg, fg tcell.Color) (tcell.Style) {
@@ -19,9 +17,6 @@ func NewStyle(bg, fg tcell.Color) (tcell.Style) {
 
 func NewTerminalContext() (TerminalContext) {
     tc := TerminalContext {
-        Row: 0,
-        Col: 0,
-        Filled: 0,
         DefaultStyle: tcell.StyleDefault.Background(tcell.ColorDefault).Foreground(tcell.ColorWhite),
         Screen: nil,
     }
@@ -41,9 +36,6 @@ func NewTerminalContext() (TerminalContext) {
 }
 
 func (tc *TerminalContext) ClearScreen() {
-    tc.Row = 0
-    tc.Col = 0
-    tc.Filled = 0
     tc.Screen.Clear()
 }
 
@@ -51,11 +43,13 @@ func (tc *TerminalContext) Size() (int, int) {
     return tc.Screen.Size()
 }
 
-func (tc *TerminalContext) NewLine() {
-    tc.Row = 0
-    tc.Col++
-}
+func (tc *TerminalContext) Center() (int, int) {
+    var x_center int
+    var y_center int
 
-func (tc *TerminalContext) MarkRow() {
-    tc.Filled++
+    w, h := tc.Size()
+    x_center = w / 2
+    y_center = h / 2
+
+    return x_center, y_center
 }

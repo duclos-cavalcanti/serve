@@ -6,6 +6,7 @@ import (
 	"sync"
     "fmt"
 
+	"github.com/duclos-cavalcanti/go-menu/cmd/menu/flags"
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/states"
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/term"
 )
@@ -17,15 +18,13 @@ var (
 )
 
 
-func defaultMode(fs Flags) {
+func defaultMode(fs flags.Flags) {
     tc := term.NewTerminalContext()
 
     debug_channel = make(chan string)
     state_channel = make(chan states.State)
 
-    application := CreateApp(&tc,
-                             states.CreateState(fs.OptFlag),
-                             &wait_group)
+    application := CreateApp(&tc, states.CreateState(fs))
 
     wait_group.Add(3)
     go parseApplicationEvents(&application)
@@ -35,7 +34,7 @@ func defaultMode(fs Flags) {
 
     tc.Screen.Fini()
 
-    if (application.hasUserChosen()) {
+    if (application.state.Chosen) {
         fmt.Println(application.state.Options[application.state.Selected])
         os.Exit(0)
     } else {
@@ -43,7 +42,7 @@ func defaultMode(fs Flags) {
     }
 }
 
-func Start(fs Flags) {
+func Start(fs flags.Flags) {
     if fs.ModeFlag == "default" {
         defaultMode(fs)
     } else {
