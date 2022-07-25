@@ -14,7 +14,7 @@ LDFLAGS ?=
 
 PWD ?= $(shell pwd)
 
-all: clean build
+all: build
 
 .PHONY: init
 init:
@@ -26,7 +26,11 @@ build:
 
 .PHONY: run
 run:
-	./$(PROJECT) --options "foo bar baz"
+	./$(PROJECT) --options "foo\nbar\nbaz" --prompt PROMPT
+
+.PHONY: example
+example:
+	./scripts/example.sh
 
 .PHONY: debug
 debug:
@@ -56,3 +60,7 @@ tidy:
 .PHONY: clean
 clean:
 	$(GO) clean -modcache
+
+.PHONY: install
+install: build
+	cp -v $(PROJECT) ~/.bin/serve
