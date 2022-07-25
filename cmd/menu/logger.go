@@ -1,16 +1,18 @@
-package util
+package menu
 
 import (
     "os"
-    "fmt"
     exec "os/exec"
+    "fmt"
     "sync"
     "log"
+
+	"github.com/duclos-cavalcanti/go-menu/cmd/menu/util"
 )
 
 func createLogger() *log.Logger {
     name := "menu.log"
-    if (ExistsFile(name)) {
+    if (util.ExistsFile(name)) {
         _, err := exec.Command("bash", "-c", fmt.Sprintf("rm -f %s", name)).Output()
         if err != nil {
             log.Fatal(err)
@@ -26,7 +28,7 @@ func createLogger() *log.Logger {
     return l
 }
 
-func LogEvents(debug_channel <-chan string, wait_group *sync.WaitGroup) {
+func logger(wait_group *sync.WaitGroup) {
     defer wait_group.Done()
     l := createLogger()
 
@@ -39,4 +41,8 @@ func LogEvents(debug_channel <-chan string, wait_group *sync.WaitGroup) {
         l.Println(s)
     }
     return
+}
+
+func logEvent(msg string) {
+    debug_channel <- msg
 }

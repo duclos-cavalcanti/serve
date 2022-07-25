@@ -3,16 +3,16 @@ package menu
 import (
     "fmt"
 
-	"github.com/duclos-cavalcanti/go-menu/cmd/menu/states"
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/term"
 
 	"github.com/gdamore/tcell"
 )
 
-func parseEvents(app *App, state_channel chan states.State, debug_channel chan string) {
+func parseEvents(app *App) {
     defer app.wait_group.Done()
     s := app.state
     state_channel <- s
+    logEvent(fmt.Sprintf("Size of options: %d", s.Size))
 
     for {
         // Poll Event
@@ -32,28 +32,35 @@ func parseEvents(app *App, state_channel chan states.State, debug_channel chan s
                         close(debug_channel)
                         return
 
+                    case tcell.KeyEnter:
+                        app.state.Chosen = true
+                        close(state_channel)
+                        close(debug_channel)
+                        return
+
                     case tcell.KeyRune:
                         switch ev.Rune() {
                             case 'j':
-                                debug_channel <- fmt.Sprintf("J has been pressed")
+                                logEvent(fmt.Sprintf("J has been pressed, sel: %d", s.Selected))
                                 if (s.Selected < s.Size) {
                                     s.Selected++
-                                    debug_channel <- fmt.Sprintf("Sel incremented: %d", s.Selected)
+                                    logEvent(fmt.Sprintf("Sel incremented: %d", s.Selected))
                                 }
                             case 'k':
-                                debug_channel <- fmt.Sprintf("K has been pressed")
+                                logEvent(fmt.Sprintf("K has been pressed, sel: %d", s.Selected))
                                 if (s.Selected > 0) {
                                     s.Selected--
-                                    debug_channel <- fmt.Sprintf("Sel decremented: %d", s.Selected)
+                                    logEvent(fmt.Sprintf("Sel decremented: %d", s.Selected))
                                 }
                         }
                 }
         state_channel <- s
+        app.state = s
         }
     }
 }
 
-func displayApplication(app *App, state_channel <-chan states.State, debug_channel chan string) {
+func displayApplication(app *App) {
     defer app.wait_group.Done()
     menu_style := term.NewStyle(tcell.ColorBlack, tcell.ColorDefault)
     selected_style := term.NewStyle(tcell.ColorDefault, tcell.ColorRed)
