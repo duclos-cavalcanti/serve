@@ -9,7 +9,7 @@ import (
 	"github.com/gdamore/tcell"
 )
 
-func parseEvents(app *App, state_channel chan states.State) {
+func parseEvents(app *App, state_channel chan states.State, debug_channel chan string) {
     defer app.wait_group.Done()
     s := app.state
     state_channel <- s
@@ -29,6 +29,7 @@ func parseEvents(app *App, state_channel chan states.State) {
                 switch ev.Key() {
                     case tcell.KeyEscape, tcell.KeyCtrlC:
                         close(state_channel)
+                        close(debug_channel)
                         return
 
                     case tcell.KeyRune:
@@ -36,10 +37,12 @@ func parseEvents(app *App, state_channel chan states.State) {
                             case 'j':
                                 if (s.Selected < s.Size) {
                                     s.Selected++
+                                    debug_channel <- fmt.Sprintf("J has been pressed, sel %d", s.Selected)
                                 }
                             case 'k':
                                 if (s.Selected > 0) {
                                     s.Selected--
+                                    debug_channel <- fmt.Sprintf("K has been pressed, sel %d", s.Selected)
                                 }
                         }
                 }
@@ -48,7 +51,7 @@ func parseEvents(app *App, state_channel chan states.State) {
     }
 }
 
-func displayApplication(app *App, state_channel <-chan states.State) {
+func displayApplication(app *App, state_channel <-chan states.State, debug_channel chan string) {
     defer app.wait_group.Done()
     menu_style := term.NewStyle(tcell.ColorBlack, tcell.ColorDefault)
     selected_style := term.NewStyle(tcell.ColorDefault, tcell.ColorRed)
@@ -64,7 +67,7 @@ func displayApplication(app *App, state_channel <-chan states.State) {
         app.tc.ClearScreen()
 
         // Menu
-        term.DrawTextNewLine(app.tc, menu_style, fmt.Sprintf("-- MENU -- [%d]", s.Selected))
+        term.DrawTextNewLine(app.tc, menu_style, fmt.Sprintf("-- MENU --"))
 
         // Options
         for i := range s.Options {

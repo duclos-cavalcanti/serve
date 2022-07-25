@@ -2,50 +2,41 @@ package util
 
 import (
     "os"
+    "fmt"
+    exec "os/exec"
+    "sync"
     "log"
-    "container/list"
 )
 
-type Logger struct {
-    file os.File
-    name string
-    q *list.List
-}
-
-func CreateLogger() Logger {
+func createLogger() *log.Logger {
     name := "menu.log"
-    f, err : = os.OpenFile(name, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
+    if (ExistsFile(name)) {
+        _, err := exec.Command("bash", "-c", fmt.Sprintf("rm -f %s", name)).Output()
+        if err != nil {
+            log.Fatal(err)
+        }
+    }
+
+    f, err := os.OpenFile(name, os.O_RDWR|os.O_CREATE|os.O_APPEND, 0666)
     if err != nil {
         log.Fatal(err)
     }
 
-    l := Logger {
-        file: f,
-        name: name,
-        q: list.New()
-    }
-
+    l := log.New(f, "INFO: ", log.Ltime)
     return l
 }
 
-func (l *Logger) queue(msg string) {
-    l.q.PushBack(msg)
-}
+func LogEvents(debug_channel <-chan string, wait_group *sync.WaitGroup) {
+    defer wait_group.Done()
+    l := createLogger()
 
-func (l *Logger) dequeue(msg string) string {
-    if (l.q.empty()) {
-        val := l.q.Front()
-        l.q.Remove(val)
-        return val
-    } else {
-        return nil
+    for {
+        s, more := <- debug_channel
+        if !more {
+            break
+        }
+
+        l.Println(s)
     }
-}
-
-func (l *Logger) empty() {
-    return (l.q.Len() == 0)
-}
-
-func (l *Logger) dump(msg string) {
-    WriteFile(l.name, msg)
+    return
 }
