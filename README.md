@@ -16,7 +16,7 @@ An example the usage can be seen in ![this](./.assets/example.mp4) video.
 ![example](./.assets/snap.png)
 
 ## Dependencies
-It simply uses Go's built in libraries. So to be able to compile the project, it is only needed to have `Go` installed on your system
+It simply uses Go's built in libraries and the amazing [tcell](https://github.com/gdamore/tcell) library. So to be able to compile the project, it is only needed to have `Go` installed on your system
 ### Arch
 ```sh
 sudo pacman -S go
