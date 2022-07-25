@@ -1,11 +1,13 @@
 # Go-Org
-A CLI menu tool :)
-
-| :exclamation: Work in Progress |
-|--------------------------------|
 
 ## Introduction
-Mostly a means to a very specific end of mine and also an opportunity to learn `Golang`.
+A very simple CLI menu tool that can be given a number of options, which will be displayed in a TUI menu. The
+user can choose between the options through the `vim keys` and finally select an option through `Enter`. The selected option will then
+be printed out after the program ends. Simply a terminal version of dmenu, the idea was to use it in conjunction with other scripts (sh/bash) to
+make decisions on said scripts more interactive. Also is a great opportunity to learn *golang*.
+
+| :exclamation: Still WIP |
+|--------------------------------|
 
 ## Dependencies
 It simply uses Go's built in libraries. So to be able to compile the project, it is only needed to have `Go` installed on your system
