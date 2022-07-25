@@ -1,5 +1,4 @@
 # Go-Org
-
 ## Introduction
 A very simple CLI menu tool that can be given a number of options, which will be displayed in a TUI menu. The
 user can choose between the options through the `vim keys` and finally select an option through `Enter`. The selected option will then
@@ -9,12 +8,15 @@ make decisions on said scripts more interactive. Also is a great opportunity to 
 | :exclamation: Still WIP |
 |--------------------------------|
 
+## Usage
+![Example](./.assets/example.gif)
+
 ## Dependencies
 It simply uses Go's built in libraries. So to be able to compile the project, it is only needed to have `Go` installed on your system
 ### Arch
 ```sh
 sudo pacman -S go
-sudo pacman -S delve # for debugging if needed
+sudo pacman -S delve # for development only
 ```
 
 ### Debian-based
@@ -23,12 +25,13 @@ sudo apt install go
 ```
 
 ### Steps
-1. `make build`
-2. `make install`
+1. `make build`: pulls necessary dependencies and builds the binary
+2. `make install`: installs it onto your system such that it is visible in $PATH (not complete)
 
 ### ToDo's
+- [ ] display video of usage
 - [ ] implement more modes
-- [ ] implement `install` target
+- [ ] finish implementation `install` target
 
 ## Thanks
 
