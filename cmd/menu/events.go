@@ -35,14 +35,16 @@ func parseEvents(app *App, state_channel chan states.State, debug_channel chan s
                     case tcell.KeyRune:
                         switch ev.Rune() {
                             case 'j':
+                                debug_channel <- fmt.Sprintf("J has been pressed")
                                 if (s.Selected < s.Size) {
                                     s.Selected++
-                                    debug_channel <- fmt.Sprintf("J has been pressed, sel %d", s.Selected)
+                                    debug_channel <- fmt.Sprintf("Sel incremented: %d", s.Selected)
                                 }
                             case 'k':
+                                debug_channel <- fmt.Sprintf("K has been pressed")
                                 if (s.Selected > 0) {
                                     s.Selected--
-                                    debug_channel <- fmt.Sprintf("K has been pressed, sel %d", s.Selected)
+                                    debug_channel <- fmt.Sprintf("Sel decremented: %d", s.Selected)
                                 }
                         }
                 }
