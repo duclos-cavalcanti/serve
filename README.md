@@ -8,8 +8,12 @@ make decisions on said scripts more interactive. Also is a great opportunity to 
 | :exclamation: Still WIP |
 |--------------------------------|
 
+| :attention: The name is go-menu, but it may change to serve |
+|--------------------------------|
+
 ## Usage
-![Example](./.assets/example.mp4)
+An example the usage can be seen in ![this](./.assets/example.mp4) video.
+![example](./.assets/example.png)
 
 ## Dependencies
 It simply uses Go's built in libraries. So to be able to compile the project, it is only needed to have `Go` installed on your system
@@ -29,7 +33,8 @@ sudo apt install go
 2. `make install`: installs it onto your system such that it is visible in $PATH (not complete)
 
 ### ToDo's
-- [ ] display video of usage
+- [ ] figure out how to properly integrate it with scripting, fzf apparently does it right
+- [ ] display video of usage properly
 - [ ] implement more modes
 - [ ] finish implementation `install` target
 
