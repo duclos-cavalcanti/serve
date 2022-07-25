@@ -8,12 +8,12 @@ make decisions on said scripts more interactive. Also is a great opportunity to 
 | :exclamation: Still WIP |
 |--------------------------------|
 
-| :attention: The name is go-menu, but it may change to serve |
+| :grey_question: The name is go-menu, but it may change to serve |
 |--------------------------------|
 
 ## Usage
 An example the usage can be seen in ![this](./.assets/example.mp4) video.
-![example](./.assets/example.png)
+![example](./.assets/snap.png)
 
 ## Dependencies
 It simply uses Go's built in libraries. So to be able to compile the project, it is only needed to have `Go` installed on your system
