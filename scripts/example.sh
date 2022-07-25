@@ -3,6 +3,6 @@
 prompt="Choose a Directory"
 options="$(ls)"
 
-./project --prompt "$prompt" --options "${options}"
+./serve --prompt "$prompt" --options "${options}"
 
 
