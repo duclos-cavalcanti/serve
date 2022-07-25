@@ -1,6 +1,6 @@
 SHELL := /bin/bash
 
-PROJECT := project
+PROJECT := serve
 MODULE := github.com/duclos-cavalcanti/go-org
 
 GO ?= go
