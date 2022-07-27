@@ -1,4 +1,4 @@
-# Go-Org
+# Go-Menu
 ## Introduction
 A very simple CLI menu tool that can be given a number of options, which will be displayed in a TUI menu. The
 user can choose between the options through the `vim keys` and finally select an option through `Enter`. The selected option will then
