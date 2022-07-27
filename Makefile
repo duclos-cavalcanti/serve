@@ -1,7 +1,7 @@
 SHELL := /bin/bash
 
 PROJECT := serve
-MODULE := github.com/duclos-cavalcanti/go-org
+MODULE := github.com/duclos-cavalcanti/go-menu
 
 GO ?= go
 FMT ?= gofmt
