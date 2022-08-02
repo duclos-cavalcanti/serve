@@ -62,7 +62,7 @@ func parseApplicationEvents(app *App) {
                     case tcell.KeyRune:
                         switch ev.Rune() {
                             case 'j':
-                                if (s.Selected < s.Size) {
+                                if (s.Selected < s.Size - 1) {
                                     s.Selected++
                                 }
                                 logEvent(fmt.Sprintf("J has been pressed, sel: %d", s.Selected))
