@@ -27,8 +27,8 @@ func defaultMode(fs flags.Flags) {
     application := CreateApp(&tc, states.CreateState(fs))
 
     wait_group.Add(3)
-    go parseApplicationEvents(&application)
-    go displayApplication(&application)
+    go parseEvents(&application)
+    go display(&application)
     go logger()
     wait_group.Wait()
 

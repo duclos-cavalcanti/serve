@@ -29,15 +29,15 @@ func createLogger() *log.Logger {
 
 func logger() {
     defer wait_group.Done()
-    l := createLogger()
+    // l := createLogger()
 
     for {
-        s, more := <- debug_channel
+        _, more := <- debug_channel
         if !more {
             return
         }
 
-        l.Println(s)
+        // l.Println(s)
     }
 }
 

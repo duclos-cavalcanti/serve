@@ -1,8 +1,6 @@
 package flags
 
 import (
-    // "fmt"
-    // "os"
     "flag"
 )
 

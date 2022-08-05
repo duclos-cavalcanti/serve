@@ -27,7 +27,7 @@ func CreateApp(tc *term.TerminalContext, initial_state states.State) App {
     return a
 }
 
-func parseApplicationEvents(app *App) {
+func parseEvents(app *App) {
     defer wait_group.Done()
     closeChannels := func(){ close(state_channel); close(debug_channel) }
 
@@ -79,10 +79,10 @@ func parseApplicationEvents(app *App) {
     }
 }
 
-func displayApplication(app *App) {
+func display(app *App) {
     defer wait_group.Done()
     normal_style := app.tc.DefaultStyle
-    selected_style := term.NewStyle(tcell.ColorDefault, tcell.ColorBlue)
+    selected_style := term.NewStyle(tcell.ColorDefault, tcell.ColorRed)
     menu := app.state.Prompt
     menu_length := app.state.PromptSize()
     max_option_length := app.state.MaxOptionSize()

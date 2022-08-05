@@ -6,6 +6,5 @@ import (
 )
 
 func main() {
-    flags := flags.ParseFlags()
-    menu.Start(flags)
+    menu.Start(flags.ParseFlags())
 }
