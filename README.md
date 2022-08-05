@@ -1,24 +1,24 @@
-# Go-Menu
-## Introduction
-A very simple CLI menu tool that can be given a number of options, which will be displayed in a TUI menu. The
-user can choose between the options through the `vim keys` and finally select an option through `Enter`. The selected option will then
-be printed out after the program ends. Simply a terminal version of dmenu, the idea was to use it in conjunction with other scripts (sh/bash) to
-make decisions on said scripts more interactive. The name if the repo is go-menu, but it may change to serve, as it is a more suitable name for the
-program.
+# Serve
+<a href="https://github.com/duclos-cavalcanti/serve/LICENSE">
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
+</a>
 
-| :grey_exclamation: Still WIP |
-|--------------------------------|
+## Introduction
+A very simple tool that receives a given number of options, displays them in a TUI menu and enables the selection of one of them. The
+user can choose between the options through vim keys (`jk`) and finally select an option through `Enter`. The selected option will then
+be written to stdout.
 
 ## Usage
-An example the usage can be seen in ![this](./.assets/example.mp4) video.
-![example](./.assets/snap.png)
+```sh
+serve --prompt PROMPT --options "foo\nbar\nbaz"
+```
+![usage](./.assets/usage.gif)
 
 ## Dependencies
 It simply uses Go's built in libraries and the amazing [tcell](https://github.com/gdamore/tcell) library. So to be able to compile the project, it is only needed to have `Go` installed on your system
-### Arch
+### Arch-based
 ```sh
 sudo pacman -S go
-sudo pacman -S delve # for development only
 ```
 
 ### Debian-based
@@ -26,15 +26,26 @@ sudo pacman -S delve # for development only
 sudo apt install go
 ```
 
+## Installation
 ### Steps
 1. `make build`: pulls necessary dependencies and builds the binary
 2. `make install`: installs it onto your system such that it is visible in $PATH (not complete)
 
+## Thanks
+- [dmenu](http://tools.suckless.org/dmenu/)
+- [tcell](https://github.com/gdamore/tcell)
+- [go-project-example](https://github.com/albertwidi/go-project-example)
+
+## License
+Serve is released under the MIT license. See [LICENSE](LICENSE)
+
+## Contributions
+Please follow the instructions in the contributions guide at [CONTRIBUTING.md](CONTRIBUTING.md).
+
 ### ToDo's
-- [ ] figure out how to properly integrate it with scripting, fzf apparently does it right
-- [ ] display video of usage properly
-- [ ] implement more modes
-- [ ] finish implementation `install` target
+- [ ] implement new modes, maybe categorized options
+- [ ] implement `install` target
+- [ ] implement `format` target
 
 ---
 <a href="https://www.buymeacoffee.com/danielduclos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-green.png" alt="Buy Me A Coffee" style="height: 40px !important;" ></a>
