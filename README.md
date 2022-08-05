@@ -37,12 +37,13 @@ sudo apt install go
 - [go-project-example](https://github.com/albertwidi/go-project-example)
 
 ## License
-Serve is released under the MIT license. See [LICENSE](LICENSE)
+Serve is released under the MIT license. See [LICENSE](LICENSE).
 
 ## Contributions
 Please follow the instructions in the contributions guide at [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ### ToDo's
+- [ ] make better fig
 - [ ] implement new modes, maybe categorized options
 - [ ] implement `install` target
 - [ ] implement `format` target
