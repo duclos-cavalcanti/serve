@@ -49,5 +49,6 @@ Please follow the instructions in the contributions guide at [CONTRIBUTING.md](C
 - [ ] implement `format` target
 
 ---
-<a href="https://www.buymeacoffee.com/danielduclos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-green.png" alt="Buy Me A Coffee" style="height: 40px !important;" ></a>
-<a href="https://www.paypal.com/donate/?hosted_button_id=NHPMH2UR93APC"> <img alt="Support via PayPal" style="height: 40px !important;" src="https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg"/> </a>
+<a href="https://ko-fi.com/duclos" target="_blank"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="height: 30px !important;" ></a>
+<a href="https://www.buymeacoffee.com/danielduclos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-green.png" alt="Buy Me A Coffee" style="height: 30px !important;" ></a>
+<a href="https://www.paypal.com/donate/?hosted_button_id=NHPMH2UR93APC"> <img alt="Support via PayPal" style="height: 30px !important;" src="https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg"/> </a>
