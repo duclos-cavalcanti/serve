@@ -12,7 +12,7 @@ be written to stdout.
 ```sh
 serve --prompt PROMPT --options "foo\nbar\nbaz"
 ```
-![usage](./.assets/usage.gif)
+![usage](./.github/.assets/usage.gif)
 
 ## Dependencies
 It simply uses Go's built in libraries and the amazing [tcell](https://github.com/gdamore/tcell) library. So to be able to compile the project, it is only needed to have `Go` installed on your system
