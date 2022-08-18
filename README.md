@@ -1,9 +1,4 @@
 # Serve
-<a href="https://github.com/duclos-cavalcanti/serve/LICENSE">
-  <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
-</a>
-
-## Introduction
 A very simple tool that receives a given number of options, displays them in a TUI menu and enables the selection of one of them. The
 user can choose between the options through vim keys (`jk`) and finally select an option through `Enter`. The selected option will then
 be written to stdout.
@@ -59,7 +54,7 @@ I have a ko-fi and a buy-me-a-coffee account, so if you found this repo useful a
 ---
 <p align="center">
 <a href="https://github.com/duclos-cavalcanti/templates/LICENSE">
-  <img src="https://img.shields.io/badge/license-GPL-blue.svg" />
+  <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
 </a>
 </p>
 
