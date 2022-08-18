@@ -37,18 +37,33 @@ sudo apt install go
 - [go-project-example](https://github.com/albertwidi/go-project-example)
 
 ## License
-Serve is released under the MIT license. See [LICENSE](LICENSE).
+This project is released under the MIT license 3.0. See [LICENSE](LICENSE).
 
 ## Contributions
 Please follow the instructions in the contributions guide at [CONTRIBUTING.md](CONTRIBUTING.md).
 
-### ToDo's
-- [ ] make better fig
-- [ ] implement new modes, maybe categorized options
-- [ ] implement `install` target
-- [ ] implement `format` target
+## Donations
+I have a ko-fi and a buy-me-a-coffee account, so if you found this repo useful and would like to show your appreciation, feel free to do so!
+
+<p align="center">
+<a href="https://ko-fi.com/duclos">
+<img src="https://img.shields.io/badge/donation-ko--fi-red.svg">
+</a>
+
+<a href="https://www.buymeacoffee.com/danielduclos">
+<img src="https://img.shields.io/badge/donation-buy--me--coffee-green.svg">
+</a>
+
+</p>
 
 ---
-<a href="https://ko-fi.com/duclos" target="_blank"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="height: 30px !important;" ></a>
-<a href="https://www.buymeacoffee.com/danielduclos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-green.png" alt="Buy Me A Coffee" style="height: 30px !important;" ></a>
-<a href="https://www.paypal.com/donate/?hosted_button_id=NHPMH2UR93APC"> <img alt="Support via PayPal" style="height: 30px !important;" src="https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg"/> </a>
+<p align="center">
+<a href="https://github.com/duclos-cavalcanti/templates/LICENSE">
+  <img src="https://img.shields.io/badge/license-GPL-blue.svg" />
+</a>
+</p>
+
+<!-- --- -->
+<!-- <a href="https://ko-fi.com/duclos" target="_blank"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="height: 30px !important;" ></a> -->
+<!-- <a href="https://www.buymeacoffee.com/danielduclos" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/lato-green.png" alt="Buy Me A Coffee" style="height: 30px !important;" ></a> -->
+<!-- <a href="https://www.paypal.com/donate/?hosted_button_id=NHPMH2UR93APC"> <img alt="Support via PayPal" style="height: 30px !important;" src="https://cdn.rawgit.com/twolfson/paypal-github-button/1.0.0/dist/button.svg"/> </a> -->
