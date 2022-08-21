@@ -1,4 +1,8 @@
-# Serve
+<h1 align="center">Serve</h1>
+<p align="center">
+  Menu CLI tool
+</p>
+<br>
 A very simple tool that receives a given number of options, displays them in a TUI menu and enables the selection of one of them. The
 user can choose between the options through vim keys (`jk`) and finally select an option through `Enter`. The selected option will then
 be written to stdout.
