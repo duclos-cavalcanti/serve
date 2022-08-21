@@ -2,11 +2,10 @@
 <p align="center">
   Menu CLI tool
 </p>
-<br>
 
 A very simple tool that receives a given number of options, displays them in a TUI menu and enables the selection of one of them. The
-user can choose between the options through vim keys `jk` and finally select an option through `Enter`. The selected option will then
-be written to stdout.
+user can choose between the options through vim keys (`jk`) and finally select an option through `Enter`. The selected option will then
+be written to `stdout`.
 
 ## Usage
 ```sh
@@ -31,16 +30,16 @@ sudo apt install go
 1. `make build`: pulls necessary dependencies and builds the binary
 2. `make install`: installs it onto your system such that it is visible in $PATH (not complete)
 
-## Thanks
-- [dmenu](http://tools.suckless.org/dmenu/)
-- [tcell](https://github.com/gdamore/tcell)
-- [go-project-example](https://github.com/albertwidi/go-project-example)
-
 ## License
 This project is released under the MIT license 3.0. See [LICENSE](LICENSE).
 
 ## Contributions
 Please follow the instructions in the contributions guide at [CONTRIBUTING.md](CONTRIBUTING.md).
+
+## Thanks
+- [dmenu](http://tools.suckless.org/dmenu/)
+- [tcell](https://github.com/gdamore/tcell)
+- [go-project-example](https://github.com/albertwidi/go-project-example)
 
 ## Donations
 I have a ko-fi and a buy-me-a-coffee account, so if you found this repo useful and would like to show your appreciation, feel free to do so!
