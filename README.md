@@ -56,7 +56,12 @@ I have a ko-fi and a buy-me-a-coffee account, so if you found this repo useful a
 <a href="https://github.com/duclos-cavalcanti/templates/LICENSE">
   <img src="https://img.shields.io/badge/license-MIT-blue.svg" />
 </a>
-</p>
+<a>
+  <img src="https://img.shields.io/github/languages/code-size/duclos-cavalcanti/serve.svg" />
+</a>
+<a>
+  <img src="https://img.shields.io/github/commit-activity/m/duclos-cavalcanti/serve.svg" />
+</a>
 
 <!-- --- -->
 <!-- <a href="https://ko-fi.com/duclos" target="_blank"><img src="https://ko-fi.com/img/githubbutton_sm.svg" alt="Support me on Ko-fi" style="height: 30px !important;" ></a> -->
