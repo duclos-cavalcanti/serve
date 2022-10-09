@@ -6,7 +6,7 @@ import (
 	"sync"
     "fmt"
 
-	"github.com/duclos-cavalcanti/go-menu/cmd/menu/flags"
+	"github.com/duclos-cavalcanti/go-menu/cmd/menu/options"
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/states"
 	"github.com/duclos-cavalcanti/go-menu/cmd/menu/term"
 )
@@ -18,7 +18,7 @@ var (
 )
 
 
-func defaultMode(fs flags.Flags) {
+func defaultMode(fs options.Flags) {
     tc := term.NewTerminalContext()
 
     debug_channel = make(chan string)
@@ -42,11 +42,11 @@ func defaultMode(fs flags.Flags) {
     }
 }
 
-func Start(fs flags.Flags) {
-    if fs.ModeFlag == "default" {
+func Start(fs options.Flags) {
+    if fs.Mode == "default" {
         defaultMode(fs)
     } else {
-        log.Fatalf("Mode: %s is Not defined", fs.ModeFlag)
+        log.Fatalf("Mode: %s is Not defined", fs.Mode)
     }
     os.Exit(0)
 }

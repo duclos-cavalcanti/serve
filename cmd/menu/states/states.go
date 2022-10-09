@@ -1,8 +1,7 @@
 package states
 
 import (
-    "strings"
-	"github.com/duclos-cavalcanti/go-menu/cmd/menu/flags"
+	"github.com/duclos-cavalcanti/go-menu/cmd/menu/options"
 )
 
 type State struct {
@@ -13,10 +12,10 @@ type State struct {
     Chosen bool
 }
 
-func CreateState(fs flags.Flags) State {
+func CreateState(fs options.Flags) State {
     var prompt string
-    options := strings.Split(strings.Trim(fs.OptFlag, "\t "), `\n`)
-    prompt = fs.PromptFlag
+    options := fs.Options
+    prompt = fs.Prompt
 
     s := State {
         Options: options,
