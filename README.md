@@ -27,7 +27,7 @@ Example:
 serve --prompt PROMPT --options "foo\nbar\nbaz"
 ```
 
-<div style="text-align: center;">
+<div align="center">
 
 ![usage](./.github/.assets/example.png)
 
