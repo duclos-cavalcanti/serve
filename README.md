@@ -8,10 +8,30 @@ user can choose between the options through vim keys (`jk`) and finally select a
 be written to `stdout`.
 
 ## Usage
+Serve can read a given string through the `-o` or `--options` flag and split it into options, which by default is separated through `\n` characters. Different delimiters can be chosen through
+the `-d` option. Additionally, serve recognizes when it is used in command chaining or piping and then proceeds to read the options from `stdin`. When
+reading from `stdin` however, serve can currently only delimit options through newlines.
+
+Options:
+```sh
+usage: serve [options]
+    -m, --mode      mode in which serve will execute, currently only one
+    -o, --options   options to select from
+    -p, --prompt    menu prompt
+    -d, --delimiter string or char used to separate options, default is '\n'
+    -h, --help      print usage
+```
+
+Example:
 ```sh
 serve --prompt PROMPT --options "foo\nbar\nbaz"
 ```
-![usage](./.github/.assets/usage.gif)
+
+<div style="text-align: center;">
+
+![usage](./.github/.assets/example.png)
+
+</div>
 
 ## Dependencies
 It simply uses Go's built in libraries and the amazing [tcell](https://github.com/gdamore/tcell) library. So to be able to compile the project, it is only needed to have `Go` installed on your system
