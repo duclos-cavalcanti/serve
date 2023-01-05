@@ -53,7 +53,7 @@ Set Width 1200
 Set Height 600
 Set LoopOffset 50%
 
-Type "echo 'Welcome to serve!'"
+Type "# Welcome to serve!"
 Sleep 500ms
 Enter
 
@@ -63,15 +63,12 @@ Enter
 
 Type "j"
 Sleep 1200ms
-Enter
 
 Type "j"
 Sleep 1200ms
-Enter
 
 Type "k"
-Sleep 1200ms
-Enter
+Sleep 2000ms
 
 Enter
 
