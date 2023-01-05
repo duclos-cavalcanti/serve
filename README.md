@@ -29,7 +29,7 @@ serve --prompt PROMPT --options "foo\nbar\nbaz"
 
 <div align="center">
 
-![usage](./.github/assets/demo.gif)
+![usage](./.github/assets/demo.gif?)
 
 </div>
 
