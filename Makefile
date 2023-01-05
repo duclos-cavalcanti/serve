@@ -16,6 +16,14 @@ PWD ?= $(shell pwd)
 
 all: build
 
+.PHONY: vhs vhs-setup
+vhs-setup:
+	@[ -n "$(shell pacman -Qs vhs)" ] || sudo pacman -S vhs
+	@[ -f ./demo.tape ] || (vhs new demo.tape; printf "Be sure to edit the demo.tape for your vhs use-case!\n")
+
+vhs: vhs-setup
+	vhs < demo.tape
+
 .PHONY: init
 init:
 	$(GO) mod init $(MODULE)

@@ -29,7 +29,7 @@ serve --prompt PROMPT --options "foo\nbar\nbaz"
 
 <div align="center">
 
-![usage](./.github/.assets/example.png)
+![usage](./.github/assets/demo.gif)
 
 </div>
 
@@ -60,6 +60,7 @@ Please follow the instructions in the contributions guide at [CONTRIBUTING.md](C
 - [dmenu](http://tools.suckless.org/dmenu/)
 - [tcell](https://github.com/gdamore/tcell)
 - [go-project-example](https://github.com/albertwidi/go-project-example)
+- [vhs](https://github.com/charmbracelet/vhs)
 
 ## Donations
 I have a ko-fi and a buy-me-a-coffee account, so if you found this repo useful and would like to show your appreciation, feel free to do so!
